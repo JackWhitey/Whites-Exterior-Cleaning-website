@@ -3,12 +3,12 @@
   "short_name": "Whites",
   "icons": [
     {
-      "src": "assets/favicon.png",
+      "src": "assets/favicon-transparent.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "assets/apple-touch-icon.png",
+      "src": "assets/apple-touch-icon-transparent.png",
       "sizes": "180x180",
       "type": "image/png"
     }
