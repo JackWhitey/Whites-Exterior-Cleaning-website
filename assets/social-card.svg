@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Whites Exterior Cleaning social card</title>
+  <desc id="desc">Social preview card for Whites Exterior Cleaning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#163656"/>
+      <stop offset="100%" stop-color="#1270c9"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1270c9"/>
+      <stop offset="100%" stop-color="#11a8a5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1060" cy="112" r="170" fill="#11a8a5" fill-opacity="0.12"/>
+  <circle cx="130" cy="530" r="220" fill="#ffffff" fill-opacity="0.08"/>
+  <rect x="88" y="118" width="112" height="112" rx="28" fill="url(#mark)"/>
+  <path d="M116 151h14l9 37 13-37h11l13 37 9-37h14l-16 50h-14l-11-29-11 29h-14z" fill="#fff"/>
+  <text x="88" y="310" fill="#ffffff" font-size="68" font-family="Arial, sans-serif" font-weight="700">Whites Exterior Cleaning</text>
+  <text x="88" y="384" fill="#d7e7ff" font-size="34" font-family="Arial, sans-serif">Window cleaning, gutter clearing, pressure washing and fascia cleaning</text>
+  <text x="88" y="440" fill="#d7e7ff" font-size="34" font-family="Arial, sans-serif">Worthing and West Sussex</text>
+</svg>
