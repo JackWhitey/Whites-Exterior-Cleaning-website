@@ -11,6 +11,7 @@
     --shadow: 0 20px 60px rgba(18, 32, 51, 0.12);
     --radius: 24px;
     --container: 1180px;
+    --header-height: 5.2rem;
     --header-offset: 6.5rem;
 }
 
@@ -29,6 +30,7 @@ html {
 
 body {
     margin: 0;
+    padding-top: var(--header-height);
     font-family: "DM Sans", sans-serif;
     color: var(--ink);
     background:
@@ -98,8 +100,10 @@ ul {
 }
 
 .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 20;
     backdrop-filter: blur(18px);
     background: rgba(245, 247, 251, 0.84);
@@ -117,7 +121,7 @@ ul {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    min-height: 5.2rem;
+    min-height: var(--header-height);
 }
 
 .brand {
@@ -727,15 +731,12 @@ a:focus-visible {
 
 @media (max-width: 640px) {
     :root {
+        --header-height: 4.8rem;
         --header-offset: 5.8rem;
     }
 
     .section {
         padding: 4.5rem 0;
-    }
-
-    .nav-shell {
-        min-height: 4.8rem;
     }
 
     .brand-logo {
