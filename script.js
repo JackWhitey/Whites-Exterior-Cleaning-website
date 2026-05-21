@@ -1,11 +1,16 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
+const siteHeader = document.querySelector('.site-header');
 
 if (menuToggle && siteNav) {
     menuToggle.addEventListener('click', () => {
         const isOpen = siteNav.classList.toggle('is-open');
         menuToggle.setAttribute('aria-expanded', String(isOpen));
         document.body.classList.toggle('nav-open', isOpen);
+
+        if (isOpen) {
+            siteHeader?.classList.remove('is-hidden');
+        }
     });
 
     siteNav.querySelectorAll('a').forEach((link) => {
@@ -13,8 +18,38 @@ if (menuToggle && siteNav) {
             siteNav.classList.remove('is-open');
             menuToggle.setAttribute('aria-expanded', 'false');
             document.body.classList.remove('nav-open');
+            siteHeader?.classList.remove('is-hidden');
         });
     });
+}
+
+if (siteHeader) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateHeaderVisibility = () => {
+        const currentScrollY = window.scrollY;
+        const menuOpen = siteNav?.classList.contains('is-open');
+        const nearTop = currentScrollY < 24;
+        const scrollingUp = currentScrollY < lastScrollY - 6;
+        const scrollingDown = currentScrollY > lastScrollY + 6;
+
+        if (menuOpen || nearTop || scrollingUp) {
+            siteHeader.classList.remove('is-hidden');
+        } else if (scrollingDown) {
+            siteHeader.classList.add('is-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeaderVisibility);
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
 document.querySelectorAll('.faq-question').forEach((button) => {
@@ -41,8 +76,10 @@ if (contactForm) {
         event.preventDefault();
 
         const formData = new FormData(contactForm);
-        const recipient = contactForm.dataset.recipient || 'info@whitesexteriorcleaning.co.uk';
+        const whatsappNumber = contactForm.dataset.whatsapp || '447475821221';
         const lines = [
+            'Quote request',
+            '',
             `Name: ${formData.get('name') || ''}`,
             `Phone: ${formData.get('phone') || ''}`,
             `Email: ${formData.get('email') || ''}`,
@@ -53,9 +90,8 @@ if (contactForm) {
             `${formData.get('message') || ''}`
         ];
 
-        const subject = encodeURIComponent(`Quote request from ${formData.get('name') || 'website visitor'}`);
-        const body = encodeURIComponent(lines.join('\n'));
-        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        const message = encodeURIComponent(lines.join('\n'));
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
 
         const note = document.querySelector('#contact-note');
         if (note) {

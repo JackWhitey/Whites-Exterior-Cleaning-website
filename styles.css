@@ -11,6 +11,7 @@
     --shadow: 0 20px 60px rgba(18, 32, 51, 0.12);
     --radius: 24px;
     --container: 1180px;
+    --header-offset: 6.5rem;
 }
 
 * {
@@ -19,6 +20,11 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-offset);
+}
+
+[id] {
+    scroll-margin-top: var(--header-offset);
 }
 
 body {
@@ -98,6 +104,12 @@ ul {
     backdrop-filter: blur(18px);
     background: rgba(245, 247, 251, 0.84);
     border-bottom: 1px solid rgba(216, 226, 238, 0.8);
+    transition: transform 0.28s ease, background-color 0.28s ease;
+    will-change: transform;
+}
+
+.site-header.is-hidden {
+    transform: translateY(calc(-100% - 1px));
 }
 
 .nav-shell {
@@ -714,6 +726,10 @@ a:focus-visible {
 }
 
 @media (max-width: 640px) {
+    :root {
+        --header-offset: 5.8rem;
+    }
+
     .section {
         padding: 4.5rem 0;
     }
