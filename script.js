@@ -24,15 +24,17 @@ if (menuToggle && siteNav) {
 }
 
 if (siteHeader) {
+    const hideHeaderAfter = 120;
+    const scrollThreshold = 10;
     let lastScrollY = window.scrollY;
     let ticking = false;
 
     const updateHeaderVisibility = () => {
         const currentScrollY = window.scrollY;
         const menuOpen = siteNav?.classList.contains('is-open');
-        const nearTop = currentScrollY < 24;
-        const scrollingUp = currentScrollY < lastScrollY - 6;
-        const scrollingDown = currentScrollY > lastScrollY + 6;
+        const nearTop = currentScrollY < hideHeaderAfter;
+        const scrollingUp = currentScrollY < lastScrollY - scrollThreshold;
+        const scrollingDown = currentScrollY > lastScrollY + scrollThreshold;
 
         if (menuOpen || nearTop || scrollingUp) {
             siteHeader.classList.remove('is-hidden');
